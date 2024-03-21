@@ -1,9 +1,20 @@
-import React from "react";
-import { Box, Button, Container, VStack, Heading, Text, Link, Image, useToast } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Button, Container, VStack, Heading, Text, Link, Image, useToast, Input } from "@chakra-ui/react";
 import { FaDownload } from "react-icons/fa";
 
 const Index = () => {
   const toast = useToast();
+  const [modelUrl, setModelUrl] = useState("");
+
+  const handleUpload = () => {
+    toast({
+      title: "Upload Started.",
+      description: "Your 3D model is being uploaded...",
+      status: "info",
+      duration: 9000,
+      isClosable: true,
+    });
+  };
 
   const handleDownload = () => {
     toast({
@@ -20,6 +31,13 @@ const Index = () => {
       <VStack spacing={8} py={12}>
         <Heading>3D Model Viewer</Heading>
         <Text>Interact with the 3D model by rotating and examining it from all angles.</Text>
+
+        <Box>
+          <Input value={modelUrl} onChange={(e) => setModelUrl(e.target.value)} placeholder="Enter model URL" mr={4} />
+          <Button colorScheme="blue" onClick={handleUpload}>
+            Upload Model
+          </Button>
+        </Box>
 
         {/* Placeholder for 3D Model Viewer */}
         <Box w="full" h="400px" bg="gray.200" display="flex" alignItems="center" justifyContent="center">
