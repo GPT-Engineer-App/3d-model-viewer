@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Container, VStack, Heading, Text, Link, Image, useToast, Input } from "@chakra-ui/react";
+import ModelViewer from "../components/ModelViewer";
 import { FaDownload } from "react-icons/fa";
 
 const Index = () => {
@@ -39,11 +40,7 @@ const Index = () => {
           </Button>
         </Box>
 
-        {/* Placeholder for 3D Model Viewer */}
-        <Box w="full" h="400px" bg="gray.200" display="flex" alignItems="center" justifyContent="center">
-          {/* This is where the actual 3D model would be rendered */}
-          <Text color="gray.500">3D Model Viewer Placeholder</Text>
-        </Box>
+        <ModelViewer modelUrl={modelUrl} />
 
         <Button leftIcon={<FaDownload />} colorScheme="teal" onClick={handleDownload}>
           Download Model
